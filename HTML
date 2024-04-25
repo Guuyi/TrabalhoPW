@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Agendamento de Revisão de Veículo</title>
+  <link rel="stylesheet" href="Trabalho.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>Trabalho Agendamento de Revisão de Veículos</h1>
+  </header>
+
+  <div class="slideshow-container">
+
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 4</div>
+      <img src="Hatch2.jpeg" alt="Hatch">
+      <div class="text">Hatch</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 4</div>
+      <img src="Sedan.jpeg" alt="Sedan">
+      <div class="text">Sedan</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 4</div>
+      <img src="SUV.jpeg" alt="SUV">
+      <div class="text">SUV</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">4 / 4</div>
+      <img src="Pickup.jpeg" alt="Pickup">
+      <div class="text">Pickup</div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+      <span class="dot" onclick="currentSlide(4)"></span>
+    </div>
+
+  </div>
+
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+  </script>
+
+  <fieldset>
+    <form action="Trabalho.html" method="get" id="formulario">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="name" required>
+      <br><br>
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required>
+      <br><br>
+      <label for="nTelefone">Telefone:</label>
+      <input type="tel" id="nTelefone" name="nTelefone" required pattern="\d{9}">
+      <br><br>
+      <label for="Modelo">Modelo do Carro:</label>
+      <select id="Modelo" name="Modelo">
+        <option value="hatch">Hatch</option>
+        <option value="sedan">Sedan</option>
+        <option value="suv">SUV</option>
+        <option value="pickup">Pickup</option>
+      </select>
+      <br><br>
+      <legend>Serviços:</legend>
+      <label><input type="checkbox" name="opcao" value="oleo"> Troca de Óleo</label>
+      <label><input type="checkbox" name="opcao" value="alinhamento"> Alinhamento</label>
+      <label><input type="checkbox" name="opcao" value="revisao"> Revisão Geral</label>
+      <br><br>
+      <label for="data">Data da Revisão:</label>
+      <input type="datetime-local" id="data" name="data" required min="2023-01-01T00:00">
+      <button type="submit">Agendar Revisão</button>
+    </form>
+  </fieldset>
+
+  <script>
+    document.getElementById('formulario').addEventListener('submit', function (event) {
+      event.preventDefault(); // Remova esta linha se quiser que o formulário seja realmente enviado
+      let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      let checkedOne = Array.prototype.slice.call(checkboxes).some(x => x.checked);
+
+      if (!checkedOne) {
+        alert('Por favor, escolha pelo menos um serviço.');
+      } else {
+        let dataInput = document.getElementById('data');
+        let now = new Date();
+        let today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString().slice(0, 16);
+
+        if (dataInput.value < today) {
+          alert('A data não pode ser anterior à data atual.');
+        } else {
+          alert('Seus dados foram submetidos com sucesso!');
+        }
+      }
+    });
+  </script>
+  <footer>
+    <h2>Tesp TPSI Guilherme Nobre 26169</h2>
+  </footer>
+</body>
+
+</html>
