@@ -112,7 +112,7 @@
 
   <script>
     document.getElementById('formulario').addEventListener('submit', function (event) {
-      event.preventDefault(); // Remova esta linha se quiser que o formulário seja realmente enviado
+      event.preventDefault(); 
       let checkboxes = document.querySelectorAll('input[type="checkbox"]');
       let checkedOne = Array.prototype.slice.call(checkboxes).some(x => x.checked);
 
