@@ -1,172 +1,224 @@
-  <!DOCTYPE html>
-  <html lang="pt">
+<!DOCTYPE html>
+<html lang="pt">
 
-  <head>
+<head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamento de Revisão de Veículo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="Trabalho.css">
-  </head>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
 
-  <body>
-
-    <header>
-      <h1>Trabalho Agendamento de Revisão de Veículos</h1>
+<body>
+    <header class="text-center" style="padding: 5px 0;">
+        <h1 style="font-size: larger; padding: 5px 0;">Trabalho Agendamento de Revisão de Veículos</h1>
     </header>
 
-    <div class="slideshow-container">
+    <div class="content-container container mt-4">
+        <div id="slideshow" class="carousel slide mb-4" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="Hatch2.jpeg" class="d-block" alt="Hatch" height="295" width="393">
+                    <div class="carousel-caption d-none d-md-block">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Sedan.jpeg" class="d-block" alt="Sedan" height="295" width="393">
+                    <div class="carousel-caption d-none d-md-block">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="SUV.jpeg" class="d-block" alt="SUV" height="295" width="393">
+                    <div class="carousel-caption d-none d-md-block">
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="Pickup.jpeg" class="d-block" alt="Pickup" height="295" width="393">
+                    <div class="carousel-caption d-none d-md-block">
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#slideshow" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#slideshow" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            <ol class="carousel-indicators">
+                <li data-target="#slideshow" data-slide-to="0" class="active"></li>
+                <li data-target="#slideshow" data-slide-to="1"></li>
+                <li data-target="#slideshow" data-slide-to="2"></li>
+                <li data-target="#slideshow" data-slide-to="3"></li>
+            </ol>
+        </div>
 
-      <div class="mySlides fade">
-        <div class="numbertext">1 / 4</div>
-        <img src="Hatch2.jpeg" alt="Hatch" height="295" width="393">
-        <div class="text">Hatch</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">2 / 4</div>
-        <img src="Sedan.jpeg" alt="Sedan" height="295" width="393">
-        <div class="text">Sedan</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">3 / 4</div>
-        <img src="SUV.jpeg" alt="SUV" height="295" width="393">
-        <div class="text">SUV</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">4 / 4</div>
-        <img src="Pickup.jpeg" alt="Pickup" height="295" width="393">
-        <div class="text">Pickup</div>
-      </div>
-
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-      <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-      </div>
-
+        <form id="formulario" class="row">
+            <div class="form-group col-md-6">
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" id="nome" name="name" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="email">E-mail:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="nTelefone">Telefone:</label>
+                <input type="tel" class="form-control" id="nTelefone" name="nTelefone" required pattern="\d{9}"
+                    placeholder="Telefone com 9 dígitos">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="vin">VIN do Carro:</label>
+                <input type="text" class="form-control" id="vin" name="vin" required>
+            </div>
+            <fieldset class="form-group col-12">
+                <legend>Serviços:</legend>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="opcao" value="oleo" id="oleo">
+                    <label class="form-check-label" for="oleo">Troca de Óleo</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="opcao" value="alinhamento" id="alinhamento">
+                    <label class="form-check-label" for="alinhamento">Alinhamento</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="opcao" value="revisao" id="revisao">
+                    <label class="form-check-label" for="revisao">Revisão Geral</label>
+                </div>
+            </fieldset>
+            <div class="form-group col-12">
+                <label for="data">Data da Revisão:</label>
+                <input type="datetime-local" class="form-control" id="data" name="data" required min="2023-01-01T00:00">
+            </div>
+            <div class="form-group col-12">
+                <button type="submit" class="btn btn-primary">Agendar Revisão</button>
+            </div>
+        </form>
     </div>
 
-    <script>
-      let slideIndex = 1;
-      showSlides(slideIndex);
+    <div id="divAcimaFooter"></div>
 
-      function plusSlides(n) {
-        showSlides(slideIndex += n);
-      }
-
-      function currentSlide(n) {
-        showSlides(slideIndex = n);
-      }
-
-      function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        let dots = document.getElementsByClassName("dot");
-        if (n > slides.length) { slideIndex = 1 }
-        if (n < 1) { slideIndex = slides.length }
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-      }
-    </script>
-
-    <fieldset>
-      <form action="Trabalho.html" method="get" id="formulario">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="name" required>
-        <br><br>
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" required>
-        <br><br>
-        <label for="nTelefone">Telefone:</label>
-        <input type="tel" id="nTelefone" name="nTelefone" required pattern="\d{9}" placeholder="Telefone com 9 digitos">
-        <br><br>
-        <label for="Modelo">Modelo do Carro:</label>
-        <select id="Modelo" name="Modelo">
-          <option value="hatch">Hatch</option>
-          <option value="sedan">Sedan</option>
-          <option value="suv">SUV</option>
-          <option value="pickup">Pickup</option>
-        </select>
-        <br><br>
-        <legend>Serviços:</legend>
-        <label><input type="checkbox" name="opcao" value="oleo"> Troca de Óleo</label>
-        <label><input type="checkbox" name="opcao" value="alinhamento"> Alinhamento</label>
-        <label><input type="checkbox" name="opcao" value="revisao"> Revisão Geral</label>
-        <br><br>
-        <label for="data">Data da Revisão:</label>
-        <input type="datetime-local" id="data" name="data" required min="2023-01-01T00:00">
-        <button type="submit">Agendar Revisão</button>
-      </form>
-    </fieldset>
-
-    <script>
-      document.getElementById('formulario').addEventListener('submit', function (event) {
-        event.preventDefault();
-        let checkboxes = document.getElementsByName("opcao");
-        let checkedOne = false;
-
-        for (let index = 0; index < checkboxes.length; index++) {
-          let input = checkboxes[index];
-          if (input.checked) {
-            checkedOne = true;
-          }
-        }
-
-        if (!checkedOne) {
-          alert('Por favor, escolha pelo menos um serviço.');
-        } else {
-          let dataInput = document.getElementById('data');
-          let now = new Date();
-          let today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString().slice(0, 16);
-
-          if (dataInput.value < today) {
-            alert('A data não pode ser anterior à data atual.');
-          } else {
-            let nome = document.getElementById('nome').value;
-            let email = document.getElementById('email').value;
-            let telefone = document.getElementById('nTelefone').value;
-            let modeloCarro = document.getElementById('Modelo').value;
-            let servicos = [];
-            checkboxes.forEach(function (checkbox) {
-              if (checkbox.checked) {
-                servicos.push(checkbox.value);
-              }
-            });
-            let dataRevisao = dataInput.value;
-
-            let cartaoInfoCliente = document.createElement('div');
-            cartaoInfoCliente.innerHTML = `
-              <div>
-                <h2>Informações do Cliente:</h2>
-                <p><strong>Nome:</strong> ${nome}</p>
-                <p><strong>E-mail:</strong> ${email}</p>
-                <p><strong>Telefone:</strong> ${telefone}</p>
-                <p><strong>Modelo do Carro:</strong> ${modeloCarro}</p>
-                <p><strong>Serviços Agendados:</strong> ${servicos.join(', ')}</p>
-                <p><strong>Data da Revisão:</strong> ${dataRevisao}</p>
-              </div>
-            `;
-            document.body.appendChild(cartaoInfoCliente);
-
-            alert('Seus dados foram submetidos com sucesso!');
-          }
-        }
-      });
-    </script>
-    <footer>
-      <h2>Tesp TPSI Guilherme Nobre 26169</h2>
+    <footer class="text-center" style="padding: 5px 0;">
+        <h2 style="font-size: larger;">Tesp TPSI Guilherme Nobre 26169</h2>
     </footer>
-  </body>
 
-  </html>
+    <script>
+        async function fetchCarInfo(vin) {
+            const url = `https://car-api2.p.rapidapi.com/api/vin/${vin}`;
+            const options = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': '78a9d9d955mshf04d2df5d62acabp1a3562jsn5107cec11ef7',
+                    'X-RapidAPI-Host': 'car-api2.p.rapidapi.com'
+                }
+            };
+
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                console.log(result);
+                return result;
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        document.getElementById('formulario').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            let checkboxes = document.getElementsByName("opcao");
+            let checkedOne = false;
+
+            for (let index = 0; index < checkboxes.length; index++) {
+                let input = checkboxes[index];
+                if (input.checked) {
+                    checkedOne = true;
+                }
+            }
+
+            if (!checkedOne) {
+                alert('Por favor, escolha pelo menos um serviço.');
+            } else {
+                let dataInput = document.getElementById('data');
+                let now = new Date();
+                let today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString().slice(0, 16);
+
+                if (dataInput.value < today) {
+                    alert('A data não pode ser anterior à data atual.');
+                } else {
+                    let nome = document.getElementById('nome').value;
+                    let email = document.getElementById('email').value;
+                    let telefone = document.getElementById('nTelefone').value;
+                    let vin = document.getElementById('vin').value;
+                    let servicos = [];
+                    checkboxes.forEach(function (checkbox) {
+                        if (checkbox.checked) {
+                            servicos.push(checkbox.value);
+                        }
+                    });
+                    let dataRevisao = dataInput.value;
+
+                    let carInfo = await fetchCarInfo(vin);
+
+                    if (!carInfo) {
+                        alert('Não foi possível obter informações do carro. Verifique o VIN e tente novamente.');
+                        return;
+                    }
+
+                    document.querySelector('.content-container').style.display = 'none';
+                    document.getElementById('slideshow').style.display = 'none';
+
+                    let cartaoInfoCliente = document.createElement('div');
+                    cartaoInfoCliente.id = 'cartaoInfoCliente';
+                    cartaoInfoCliente.className = 'd-flex';
+                    cartaoInfoCliente.innerHTML = `
+                        <div class="card card-info mt-4">
+                            <div class="card-header">
+                                <h2>Informações do Cliente:</h2>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Nome:</strong> ${nome}</p>
+                                <p><strong>E-mail:</strong> ${email}</p>
+                                <p><strong>Telefone:</strong> ${telefone}</p>
+                                <p><strong>VIN do Carro:</strong> ${vin}</p>
+                                <p><strong>Serviços Agendados:</strong> ${servicos.join(', ')}</p>
+                                <p><strong>Data da Revisão:</strong> ${dataRevisao}</p>
+                                <p><strong>Informações do Carro:</strong></p>
+                                <ul>
+                                    <li><strong>Ano:</strong> ${carInfo.year}</li>
+                                    <li><strong>Marca:</strong> ${carInfo.make}</li>
+                                    <li><strong>Modelo:</strong> ${carInfo.model}</li>
+                                </ul>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button id="voltarBtn" class="btn btn-secondary">Voltar</button>
+                            </div>
+                        </div>
+                        <div class="card card-img mt-4">
+                            <img src="Thankyoucarro.png" alt="carroThankyou">
+                        </div>
+                    `;
+                    document.getElementById('divAcimaFooter').appendChild(cartaoInfoCliente);
+
+                    document.getElementById('formulario').reset();
+
+                    alert('Os seus dados foram submetidos com sucesso!');
+
+                    document.getElementById('voltarBtn').addEventListener('click', function () {
+                        document.getElementById('cartaoInfoCliente').remove();
+                        document.querySelector('.content-container').style.display = 'block';
+                        document.getElementById('slideshow').style.display = 'block';
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
