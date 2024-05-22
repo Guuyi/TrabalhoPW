@@ -58,20 +58,19 @@
         </div>
 
         <form id="formulario" class="row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 col-sm-12">
                 <label for="nome">Nome:</label>
                 <input type="text" class="form-control" id="nome" name="name" required>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 col-sm-12">
                 <label for="email">E-mail:</label>
                 <input type="email" class="form-control" id="email" name="email" required>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 col-sm-12">
                 <label for="nTelefone">Telefone:</label>
-                <input type="tel" class="form-control" id="nTelefone" name="nTelefone" required pattern="\d{9}"
-                    placeholder="Telefone com 9 dígitos">
+                <input type="tel" class="form-control" id="nTelefone" name="nTelefone" required pattern="\d{9}" placeholder="Telefone com 9 dígitos">
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 col-sm">
                 <label for="vin">VIN do Carro:</label>
                 <input type="text" class="form-control" id="vin" name="vin" required>
             </div>
@@ -133,14 +132,8 @@
         document.getElementById('formulario').addEventListener('submit', async function (event) {
             event.preventDefault();
             let checkboxes = document.getElementsByName("opcao");
-            let checkedOne = false;
 
-            for (let index = 0; index < checkboxes.length; index++) {
-                let input = checkboxes[index];
-                if (input.checked) {
-                    checkedOne = true;
-                }
-            }
+            let checkedOne = Array.from(checkboxes).some(input => input.checked);
 
             if (!checkedOne) {
                 alert('Por favor, escolha pelo menos um serviço.');
@@ -176,9 +169,9 @@
 
                     let cartaoInfoCliente = document.createElement('div');
                     cartaoInfoCliente.id = 'cartaoInfoCliente';
-                    cartaoInfoCliente.className = 'd-flex';
+                    cartaoInfoCliente.className = 'd-flex flex-wrap';
                     cartaoInfoCliente.innerHTML = `
-                        <div class="card card-info mt-4">
+                        <div class="card card-info mt-4 flex-fill">
                             <div class="card-header">
                                 <h2>Informações do Cliente:</h2>
                             </div>
@@ -196,9 +189,9 @@
                                     <li><strong>Modelo:</strong> ${carInfo.model}</li>
                                 </ul>
                             </div>
-                            <div class="card-footer text-center">
-                                <button id="voltarBtn" class="btn btn-secondary">Voltar</button>
-                            </div>
+                        </div>
+                        <div class="card-footer text-center flex-fill mt-4">
+                            <button id="voltarBtn" class="btn btn-secondary">Voltar</button>
                         </div>
                         <div class="card card-img mt-4">
                             <img src="Thankyoucarro.png" alt="carroThankyou">
