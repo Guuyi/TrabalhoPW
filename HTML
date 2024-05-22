@@ -64,7 +64,7 @@
             </div>
             <div class="form-group col-md-6 col-sm-12">
                 <label for="email">E-mail:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" name="email" required placeholder="Exemplo@Exemplo.com">
             </div>
             <div class="form-group col-md-6 col-sm-12">
                 <label for="nTelefone">Telefone:</label>
@@ -72,7 +72,7 @@
             </div>
             <div class="form-group col-md-6 col-sm">
                 <label for="vin">VIN do Carro:</label>
-                <input type="text" class="form-control" id="vin" name="vin" required>
+                <input type="text" class="form-control" id="vin" name="vin" required placeholder="VIN Americano entre 2015-2020">
             </div>
             <fieldset class="form-group col-12">
                 <legend>Serviços:</legend>
@@ -119,7 +119,7 @@
             try {
                 const response = await fetch(url, options);
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    throw new Error('Erro');
                 }
                 const result = await response.json();
                 console.log(result);
@@ -164,8 +164,10 @@
                         return;
                     }
 
+
                     document.querySelector('.content-container').style.display = 'none';
                     document.getElementById('slideshow').style.display = 'none';
+
 
                     let cartaoInfoCliente = document.createElement('div');
                     cartaoInfoCliente.id = 'cartaoInfoCliente';
